@@ -1,23 +1,23 @@
 import csv
-from disposable_email_domains import blocklist
 
-# Initialize counter for spam emails
+with open('domains.txt', 'r') as f:
+    allowed_domains = set(f.read().splitlines())
+
 spam_emails = 0
+random=0
 
-# Open and read the CSV file
 with open('emails.csv', 'r') as file:
     reader = csv.reader(file)
-    next(reader)  # Skip header if exists
+    next(reader)  
     for row in reader:
         email = row[0]
-        domain = email.split('@')[-1]  # Extract domain from email
+        domain = email.split('@')[-1]  # Extracting domain
 
-        # Check if domain is in the blocklist
-        if domain in blocklist:
+        if domain in allowed_domains:
+            #print(f"{email} is not a spam email.")
+            random+=2
+        else:
             print(f"{email} is a spam email.")
             spam_emails += 1
-        #else:
-            #print(f"{email} is not a spam email.")
 
-# Print total count of spam emails
-print("Total spam emails:", spam_emails)
+print("Spam emails found", spam_emails)
