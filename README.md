@@ -1,6 +1,6 @@
 # Disposable Email Checker
 
-This repository contains list of emails created with disposable domains used to spam the websites.
+This repository contains list of emails created with legitimate domain names.
 
 In addition to the emails, the repo contains a python script which you can use to check if the spam emails exist in your dashboard.
 
