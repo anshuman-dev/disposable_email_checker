@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Scanner</title>
+</head>
+<body>
+    <h1>Email Scanner</h1>
+    <form action="/scan" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".csv">
+        <button type="submit">Start Scanning</button>
+    </form>
+    {% if spam_emails %}
+        <p>Total Spam emails: {{ total_spam }}</p>
+        <ul>
+            {% for email in spam_emails %}
+                <li>{{ email }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
